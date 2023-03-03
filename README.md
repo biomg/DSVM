@@ -1,34 +1,31 @@
-# SVMHGE
-Computational algorithms for identifying RNAs that bind to specific RBPs are urgently needed, and they can complement high-cost experimental methods.  <br>
-In this study, we propose a weighted voting deep learning (WVDL) to predict RNA-protein binding sites.  <br>
+# DSVM
+In this study, we construct a prediction model for endometrial cancer grade based on the expression data.  <br>
+DSVM is a support vector machine model with sigmoid kernel functions combined with z-score standardization.  <br>
 
 # Dependency:
-python 3.8.5 <br>
-Pytorch 1.4.0 <br>
+Python 3.7.12 <br>
+Scikit-learn 0.22.1 <br>
+matplotlib 3.5.3  <br>
+numpy 1.21.6   <br>
+pandas 1.3.5   <br>
+R 3.2.3 <br>
+r-dplyr 0.7.8  <br>
+r-survminer 0.4.3    <br>
+r-survival 2.42_6   <br>
 
 # Data 
-Download the trainig and testing data from http://www.bioinf.uni-freiburg.de/Software/GraphProt/GraphProt_CLIP_sequences.tar.bz2 and decompress it in current dir.  <br>
-It has 24 experiments of 21 RBPs, and we need train one model per experiment. <br>
+Downloaded from https://github.com/gargyapeter/ucec_ml_grade2021.
 
-# Supported GPUs
-Now it supports GPUs. The code support GPUs and CPUs, it automatically check whether you server install GPU or not, it will proritize using the GPUs if there exist GPUs. <br> In addition, WVDL can also be adapted to protein binding sites on DNAs and identify DNA binding speciticity of proteins.  <br>
-          
-It supports model training, testing. <br>
+ucec_tcga_clinical_data.zip: It contains raw clinical data, and it's the input of R_survival_analysis.Rmd.
+uterus_rnaseq_VST1.z01, uterus_rnaseq_VST1.z02, uterus_rnaseq_VST1.zip, uterus_rnaseq_VST_G2.zip: These zip files contain the processed gene expression data, and they are the input of DSVM.py.   <br>
+
 
 # Usage:
-python main.py 
+python DSVM.py 
 
-The main.py file contains positive and negative training and test sets
+R -e "rmarkdown::render('R_survival_analysis.Rmd',output_file='output.html')"
 
-python motif.py
-
-Draw the motif pictures from CNN parameters.
-
-# NOTE
-When you train WVDL on your own constructed benchmark dataset, if the training loss cannot converge, may other optimization methods, like SGD or RMSprop can be used to replace Adam in the code.  <br>
 
 # Contact
-Zhengsen Pan: zhengsenpan@foxmail.com <br>
+Xindi Yu: yuxindi53@foxmail.com <br>
 
-# Updates:
-1/6/2023 <br>
